@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
-import { useAuthState, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import {
+    useAuthState,
+    useSendPasswordResetEmail,
+    useSignInWithEmailAndPassword
+} from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 const Login = () => {
@@ -7,6 +11,8 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [signInWithEmailAndPassword, loading, error] =
     useSignInWithEmailAndPassword(auth);
+  const [sendPasswordResetEmail, sending, error1] =
+    useSendPasswordResetEmail(auth);
   const [user] = useAuthState(auth);
   const location = useLocation();
   const navigate = useNavigate();
@@ -26,6 +32,19 @@ const Login = () => {
   };
   const handleRegister = () => {
     navigate('/registration');
+  };
+  if (error) {
+    return (
+      <div>
+        <p>Error: {error.message}</p>
+      </div>
+    );
+  }
+  if (sending) {
+    return <p>Sending...</p>;
+  }
+  const resetPassword = () => {
+    sendPasswordResetEmail(email);
   };
   return (
     <div className='w-1/2 mx-auto mt-10 h-screen my-auto'>
@@ -48,22 +67,38 @@ const Login = () => {
               placeholder='your password'
             />
           </div>
+          <div>
+            <p className='text-base text-red-800 font-medium'>
+              {error ? error.message : ''}
+            </p>
+            <p className='text-base text-red-800 mt-2 font-medium'>
+              {error1 ? error1.message : ''}
+            </p>
+          </div>
+          <div className='mt-5 text-right'>
+            <button
+              onClick={resetPassword}
+              className='text-red-600 font-medium'
+            >
+              reset password?
+            </button>
+          </div>
           <button className='w-full bg-slate-600 text-white py-2 mt-10 rounded'>
             Login
           </button>
           <p className='text-center mt-5 w-full'>
-            New user ?{' '}
+            New user ?
             <button
               onClick={handleRegister}
               className='text-red-600 font-semibold'
             >
-              Register 
+              Register
             </button>
           </p>
         </form>
       </div>
     </div>
   );
-}
+};
 
-export default Login
+export default Login;

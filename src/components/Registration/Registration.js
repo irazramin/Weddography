@@ -1,3 +1,4 @@
+import { sendEmailVerification } from 'firebase/auth';
 import React, { useState } from 'react';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
@@ -6,6 +7,7 @@ import auth from '../../firebase.init';
 const Registration = () => {
  const [createUserWithEmailAndPassword, user, loading, error] =
    useCreateUserWithEmailAndPassword(auth);
+// const [sendEmailVerification, sending, error2] = useSendEmailVerification(auth);
  const [email, setEmail] = useState('');
  const [name, setName] = useState('');
  const [password, setPassword] = useState('');
@@ -13,7 +15,9 @@ const Registration = () => {
 
  const handleRegistrationSubmit = (e) => {
    e.preventDefault();
-   createUserWithEmailAndPassword(email, password);
+   createUserWithEmailAndPassword(email, password).then(() =>{
+       sendVerification()
+   })
  };
  const handleNameInput = (e) => {
    setName(e.target.value);
@@ -27,6 +31,10 @@ const Registration = () => {
  const handleLogin = () => {
    navigate('/login');
  };
+
+ const sendVerification =  () =>{
+    sendEmailVerification(auth.currentUser)
+ } 
  return (
    <div className='w-1/2 mx-auto mt-10 h-screen my-auto'>
      <form
@@ -56,7 +64,7 @@ const Registration = () => {
            type='password'
            placeholder='your password'
          />
-         <p className='text-lg text-red-800 font-medium'>{error ? error : ''}</p>
+         <p className='text-lg text-red-800 font-medium'>{error ? error.message : ''}</p>
        </div>
        <button className='w-full bg-slate-600 text-white py-2 mt-10 rounded'>
          Register
