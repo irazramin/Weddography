@@ -1,9 +1,13 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
+import auth from '../../firebase.init';
 import CustomLink from '../CustomLink/CustomLink';
 
 const Header = () => {
     const navigate = useNavigate();
+    const [user] = useAuthState(auth);
     const navItems = [
         {
             id:1,
@@ -22,6 +26,9 @@ const Header = () => {
         },
     ]
 
+    const userSignOut = () =>{
+        signOut(auth);
+    }
     const navigateLoginPage = () =>{
             navigate('/login')
     }
@@ -33,11 +40,29 @@ const Header = () => {
         </div>
         <div className='flex items-center justify-between '>
           {navItems.map((item) => (
-            <CustomLink className='mx-3 text-lg font-normal ' key={item.id} to={item.path}>
+            <CustomLink
+              className='mx-3 text-lg font-normal '
+              key={item.id}
+              to={item.path}
+            >
               {item.navLink}
             </CustomLink>
           ))}
-        <button onClick={navigateLoginPage} className='text-lg bg-orange-500 px-[12px] text-white rounded shadow'>Login</button>
+          {user ? (
+            <button
+              onClick={userSignOut}
+              className='text-lg bg-orange-500 px-[12px] text-white rounded shadow'
+            >
+              Sign out
+            </button>
+          ) : (
+            <button
+              onClick={navigateLoginPage}
+              className='text-lg bg-orange-500 px-[12px] text-white rounded shadow'
+            >
+              Login
+            </button>
+          )}
         </div>
       </nav>
     </header>
