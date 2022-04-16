@@ -62,10 +62,16 @@ const Login = () => {
             type='password'
             placeholder='your password'
           />
-          <p className='text-red-500 font-medium '>{error?.message}</p>
+          <div>
+            <p className='text-red-500 font-medium '>{error?.message}</p>
+          </div>
         </div>
         <div className='mt-5 text-right'>
-          <button type='button' onClick={resetPassword} className='text-red-600 font-medium'>
+          <button
+            type='button'
+            onClick={resetPassword}
+            className='text-red-600 font-medium'
+          >
             reset password?
           </button>
         </div>
@@ -78,7 +84,7 @@ const Login = () => {
             onClick={handleRegister}
             className='text-red-600 font-semibold ml-2'
           >
-             Register
+            Register
           </button>
         </p>
       </form>
