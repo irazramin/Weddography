@@ -6,12 +6,12 @@ import { getAuth } from 'firebase/auth';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: 'AIzaSyBV-GCOF4jsXnU4XQcrPqCxAqV_5q8W7ys',
-  authDomain: 'weddography-2ad15.firebaseapp.com',
-  projectId: 'weddography-2ad15',
-  storageBucket: 'weddography-2ad15.appspot.com',
-  messagingSenderId: '1004443310853',
-  appId: '1:1004443310853:web:0caa7185208d90cab3f56c',
+  apiKey: 'AIzaSyDv38Gq9Q37AfYQd8cNYwq8xhFMuKpkOGA',
+  authDomain: 'weddography-2e501.firebaseapp.com',
+  projectId: 'weddography-2e501',
+  storageBucket: 'weddography-2e501.appspot.com',
+  messagingSenderId: '325073976086',
+  appId: '1:325073976086:web:4dd44a03d8f27f2665ee37',
 };
 
 // Initialize Firebase
