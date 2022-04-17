@@ -1,3 +1,5 @@
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { signOut } from 'firebase/auth';
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -50,7 +52,7 @@ const Header = () => {
         className='duration-500 absolute left-3 lg:hidden block'
         onClick={() => setToggle(!toggle)}
       >
-        =
+        <FontAwesomeIcon icon={faBars} className='text-[25px]'/>
       </button>
       <nav className='lg:flex items-center justify-between w-10/12 mx-auto  top-0 relative'>
         <div>

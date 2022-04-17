@@ -1,5 +1,5 @@
 import React from 'react';
-
+import profile from '../../img/my_pic.jpg';
 const About = () => {
   return (
     <div className='mx-auto w-11/12 lg:w-2/6 mt-20 relative bottom-0 h-[75vh]'>
@@ -9,7 +9,7 @@ const About = () => {
         </h4>
         <img
           className='w-[130px] h-[130px] rounded-full mx-auto shadow-xl border-4 border-white'
-          src='https://images.unsplash.com/photo-1551780165-f2a8e6d86eb8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
+          src={profile}
           alt=''
         />
 

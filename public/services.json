@@ -3,21 +3,21 @@
     "id": 1,
     "name": "Basic Service",
     "price": "1500",
-    "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa.",
+    "description": "This is a basic package.In this package you will get , Family pictures, Bridal single shooting,400 to 500 images,High resolution images in JPG,Picture album 30cm x 30cm ",
     "img": "https://images.unsplash.com/uploads/1411074708175ba26fea4/498d4c3a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
   },
   {
     "id": 2,
     "name": "Advance Service",
     "price": "3000",
-    "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa.",
+    "description": "This is a advance package.In this package you will get, Family and group pictures,Bridal couple shooting,500 to 600 images,High resolution images in JPG,Picture album 30cm x 30cm ",
     "img": "https://images.unsplash.com/photo-1611550287705-7ff8b459c8eb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
   },
   {
     "id": 3,
     "name": "Premium Service",
     "price": "5000",
-    "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa.",
+    "description": "This is a premium package.In this package you will get, Family and group pictures,Bridal couple shooting,600 to 600 images,High resolution images in JPG,Picture album 40cm x 40cm ",
     "img": "https://images.unsplash.com/photo-1601073887798-7e0f72ace6bd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fHdlZGRpbmclMjBjYW1lcmF8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
   }
 ]
