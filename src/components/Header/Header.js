@@ -34,8 +34,8 @@ const Header = () => {
             navigate('/login')
     }
   return (
-    <header className='bg-slate-100 py-3'>
-      <nav className='flex items-center justify-between w-10/12 mx-auto'>
+    <header className='bg-slate-100 py-3  '>
+      <nav className='flex items-center justify-between w-10/12 mx-auto sticky top-0'>
         <div>
           <h4 className='font-medium text-xl'>Weddography</h4>
         </div>
@@ -52,14 +52,14 @@ const Header = () => {
           {user ? (
             <button
               onClick={userSignOut}
-              className='text-lg bg-orange-500 px-[12px] text-white rounded shadow'
+              className='text-lg bg-red-500 px-[12px] py-[2px] text-white rounded shadow'
             >
               Sign out
             </button>
           ) : (
             <button
               onClick={navigateLoginPage}
-              className='text-lg bg-orange-500 px-[12px] text-white rounded shadow'
+              className='text-lg bg-red-500 px-[12px] py-[2px] text-white rounded shadow'
             >
               Login
             </button>

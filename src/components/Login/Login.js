@@ -43,51 +43,51 @@ const Login = () => {
   };
   return (
     <div className='w-1/2 mx-auto mt-10 h-screen my-auto'>
-      <form
-        onSubmit={handleRegistrationSubmit}
-        className=' w-1/2  mx-auto shadow-md p-5'
-      >
-        <div>
-          <input
-            onBlur={handleEmailInput}
-            className='border-2 border-slate-300 w-full px-5 py-2 rounded m-auto'
-            type='email'
-            placeholder='your email'
-          />
-        </div>
-        <div>
-          <input
-            onBlur={handlePasswordInput}
-            className='border-2 border-slate-300 px-5 py-2 rounded w-full mt-5 '
-            type='password'
-            placeholder='your password'
-          />
+      <div className=' w-1/2  mx-auto shadow-md p-5'>
+        <h4 className='text-2xl font-medium text-slate-900'>Please login</h4>
+        <form onSubmit={handleRegistrationSubmit} className='mt-5'>
           <div>
-            <p className='text-red-500 font-medium '>{error?.message}</p>
+            <input
+              onBlur={handleEmailInput}
+              className='border-2 border-slate-300 w-full px-5 py-2 rounded m-auto'
+              type='email'
+              placeholder='your email'
+            />
           </div>
-        </div>
-        <div className='mt-5 text-right'>
-          <button
-            type='button'
-            onClick={resetPassword}
-            className='text-red-600 font-medium'
-          >
-            reset password?
+          <div>
+            <input
+              onBlur={handlePasswordInput}
+              className='border-2 border-slate-300 px-5 py-2 rounded w-full mt-5 '
+              type='password'
+              placeholder='your password'
+            />
+            <div>
+              <p className='text-red-500 font-medium '>{error?.message}</p>
+            </div>
+          </div>
+          <div className='mt-5 text-right'>
+            <button
+              type='button'
+              onClick={resetPassword}
+              className='text-red-600 font-medium'
+            >
+              reset password?
+            </button>
+          </div>
+          <button className='w-full bg-red-500 text-white py-2 mt-5 rounded'>
+            Login
           </button>
-        </div>
-        <button className='w-full bg-slate-600 text-white py-2 mt-5 rounded'>
-          Login
-        </button>
-        <p className='text-center mt-5 w-full'>
-          New user?
-          <button
-            onClick={handleRegister}
-            className='text-red-600 font-semibold ml-2'
-          >
-            Register
-          </button>
-        </p>
-      </form>
+          <p className='text-center mt-5 w-full'>
+            New user?
+            <button
+              onClick={handleRegister}
+              className='text-red-600 font-semibold ml-2'
+            >
+              Register
+            </button>
+          </p>
+        </form>
+      </div>
     </div>
   );
 };
