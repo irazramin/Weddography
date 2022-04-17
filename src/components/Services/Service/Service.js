@@ -1,7 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Service = ({service}) => {
-    const { img, price, description, name } = service;
+    const { id,img, price, description, name } = service;
+    const navigate = useNavigate()
+    const navigateCheckout = () =>{
+        navigate(`/checkout/${id}`);
+    }
   return (
     <div className='border-[1px] relative w-full'>
       <div>
@@ -12,14 +17,14 @@ const Service = ({service}) => {
         />
       </div>
       <div className='m-3 text-center'>
-        <h4 className='mt-2  text-lg font-semibold text-black'>{name}</h4>
+        <h4 className='mt-5  text-lg font-semibold text-black'>{name}</h4>
         <p className='mt-2 text-base text-left'>{description}</p>
         <div className='flex  items-center justify-between  mt-5'>
           <div className='bg-sky-800 py-[1px] px-1  absolute top-[200px] right-0 shadow-md'>
             <p className='text-white'>${price}</p>
           </div>
           <div>
-            <button className='bg-red-500 hover:bg-red-700 px-4 py-1 text-white font-normal rounded'>Checkout service</button>
+            <button onClick={navigateCheckout} className='bg-red-500 hover:bg-red-700 px-4 py-1 text-white font-normal rounded'>Checkout service</button>
           </div>
         </div>
       </div>

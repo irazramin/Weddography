@@ -17,11 +17,16 @@ const Header = () => {
         },
         {
             id:2,
+            path:"/checkout",
+            navLink:"Checkout"
+        },
+        {
+            id:3,
             path:"/blogs",
             navLink:"Blogs"
         },
         {
-            id:3,
+            id:4,
             path:"/about",
             navLink:"About"
         },
