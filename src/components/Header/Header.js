@@ -19,16 +19,21 @@ const Header = () => {
         },
         {
             id:2,
+            path:"/service",
+            navLink:"Service"
+        },
+        {
+            id:3,
             path:"/checkout",
             navLink:"Checkout"
         },
         {
-            id:3,
+            id:4,
             path:"/blogs",
             navLink:"Blogs"
         },
         {
-            id:4,
+            id:5,
             path:"/about",
             navLink:"About"
         },

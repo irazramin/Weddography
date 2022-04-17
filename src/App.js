@@ -11,6 +11,7 @@ import Login from './components/Login/Login';
 import NotFound from './components/NotFound/NotFound';
 import Registration from './components/Registration/Registration';
 import RequireAuth from './components/RequireAuth/RequireAuth';
+import ServiceSction from './components/ServiceSection/ServiceSction';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path='/login' element={<Login />}></Route>
         <Route path='/registration' element={<Registration />}></Route>
         <Route path='/checkout' element={<Checkout />}></Route>
+        <Route path='/service' element={<ServiceSction />}></Route>
         <Route
           path='/checkout/:checkId'
           element={
