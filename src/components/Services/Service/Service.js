@@ -4,9 +4,9 @@ import { useNavigate } from 'react-router-dom';
 const Service = ({service}) => {
     const { id,img, price, description, name } = service;
     const navigate = useNavigate()
-    const navigateCheckout = () =>{
-        navigate(`/checkout/${id}`);
-    }
+    const navigateCheckoutDetails = (id) => {
+      navigate(`/checkout/${id}`);
+    };
   return (
     <div className='border-[1px] relative w-full'>
       <div>
@@ -24,7 +24,7 @@ const Service = ({service}) => {
             <p className='text-white'>${price}</p>
           </div>
           <div>
-            <button onClick={navigateCheckout} className='bg-red-500 hover:bg-red-700 px-4 py-1 text-white font-normal rounded'>Checkout service</button>
+            <button onClick={() => navigateCheckoutDetails(id)} className='bg-red-500 hover:bg-red-700 px-4 py-1 text-white font-normal rounded'>Checkout service</button>
           </div>
         </div>
       </div>

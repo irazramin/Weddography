@@ -8,7 +8,6 @@ import CustomLink from '../CustomLink/CustomLink';
 const Header = () => {
     const navigate = useNavigate();
     const [user] = useAuthState(auth);
-    console.log(user)
     const navItems = [
         {
             id:1,

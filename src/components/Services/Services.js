@@ -1,10 +1,10 @@
 import React from 'react';
-import useFetch from '../useFetch/useFetch';
+import useFetch from '../hooks/useFetch';
 import Service from './Service/Service';
 
 const Services = () => {
   const [services,setServices] = useFetch();
-  console.log(services)
+ 
   return (
     <div>
       <div>
