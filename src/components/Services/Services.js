@@ -4,7 +4,6 @@ import Service from './Service/Service';
 
 const Services = () => {
   const [services,setServices] = useFetch();
-  console.log(services)
   return (
     <div>
       <div>

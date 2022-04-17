@@ -28,7 +28,7 @@ createUserWithEmailAndPassword(email, password).then(() =>{
     setPassword('');
   };
   if(user){
-      navigate('/home')
+      navigate('/')
   }
   const handleNameInput = (e) => {
     setName(e.target.value);

@@ -8,7 +8,8 @@ const CheckoutDetails = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-
+  const singleService = services.find(service => service.id === checkId);
+  console.log(singleService?.name)
   const handleCheckoutSubmit = (e) =>{
 
   }
