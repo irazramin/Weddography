@@ -2,7 +2,7 @@ import React from 'react';
 import profile from '../../img/my_pic.jpg';
 const About = () => {
   return (
-    <div className='mx-auto w-11/12 lg:w-2/6 mt-20 relative bottom-0 h-[75vh]'>
+    <div className='mx-auto w-11/12 lg:w-2/6 my-20 relative bottom-0 '>
       <div className=' shadow-lg p-10'>
         <h4 className='text-2xl font-semibold text-center mb-3'>
           About myself
