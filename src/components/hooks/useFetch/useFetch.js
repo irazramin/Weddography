@@ -4,7 +4,7 @@ const useFetch = () => {
   const [services, setServices] = useState([]);
 
   useEffect(() => {
-    fetch('services.json')
+    fetch('https://irazramin.github.io/wedData/services.json')
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, []);

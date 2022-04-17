@@ -2,10 +2,12 @@ import { sendPasswordResetEmail } from 'firebase/auth';
 import React, { useState } from 'react';
 import {
   useAuthState,
-  useSignInWithEmailAndPassword
+  useSignInWithEmailAndPassword,
+  useSignInWithGoogle,
 } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import googleIcon from '../../img/google.png';
 import loader from '../../img/loader.svg';
 
 const Login = () => {
@@ -14,6 +16,7 @@ const Login = () => {
 
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
+  const [signInWithGoogle, user2, loading1, error1] = useSignInWithGoogle(auth);
 
   const [user1] = useAuthState(auth);
 
@@ -40,11 +43,15 @@ const Login = () => {
     navigate('/registration');
   };
   const resetPassword = () => {
-    if(email){
+    if (email) {
       sendPasswordResetEmail(auth, email);
-    }else{
-      alert('enter email')
+    } else {
+      alert('enter email');
     }
+  };
+
+  const handleLoginWithGoogle = () => {
+    signInWithGoogle()
   };
   return (
     <div className='w-11/12 lg:w-1/2 mx-auto mt-10 h-screen my-auto'>
@@ -67,7 +74,7 @@ const Login = () => {
               placeholder='your password'
             />
             <div>
-              <p className='text-red-500 font-medium '>{error?.message}</p>
+              <p className='text-red-500 font-medium '>{error1?.message || error?.message}</p>
             </div>
           </div>
           <div className='mt-5 text-right'>
@@ -80,7 +87,14 @@ const Login = () => {
             </button>
           </div>
           <button className='w-full bg-red-500 text-white h-[40px] mt-5 rounded'>
-            {loading ? <> <img className='w-[25px] mx-auto' src={loader} alt="" /> </> : 'Login'}
+            {loading ? (
+              <>
+                {' '}
+                <img className='w-[25px] mx-auto' src={loader} alt='' />{' '}
+              </>
+            ) : (
+              'Login'
+            )}
           </button>
           <p className='text-center mt-5 w-full'>
             New user?
@@ -94,6 +108,21 @@ const Login = () => {
         </form>
       </div>
 
+      <div className='flex items-center mt-8 w-[40%] mx-auto'>
+        <hr className='w-[50%] border-[1px]' />
+        <p className='mx-4'>or</p>
+        <hr className='w-[50%] border-[1px]' />
+      </div>
+
+      <div className='w-[48%] mx-auto'>
+        <button
+          onClick={handleLoginWithGoogle}
+          className='w-full bg-slate-700 hover:bg-slate-800 text-white h-[40px] mt-5 rounded flex items-center justify-center'
+        >
+          <img className='w-[25px] mr-3' src={googleIcon} alt='' /> Login with
+          google
+        </button>
+      </div>
     </div>
   );
 };
