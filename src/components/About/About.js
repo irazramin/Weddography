@@ -2,8 +2,8 @@ import React from 'react';
 
 const About = () => {
   return (
-    <div className='mx-auto w-11/12 lg:w-2/6 mt-20'>
-      <div className='h-3/5 shadow-lg p-5'>
+    <div className='mx-auto w-11/12 lg:w-2/6 mt-20 relative bottom-0 h-[75vh]'>
+      <div className=' shadow-lg p-10'>
         <h4 className='text-2xl font-semibold text-center mb-3'>
           About myself
         </h4>
@@ -14,7 +14,7 @@ const About = () => {
         />
 
         <div className='text-center'>
-          <h4 className='mt-5 '>Iraz Ramin Bayejid </h4>
+          <h4 className='mt-5 text-lg font-medium'>Iraz Ramin Bayejid </h4>
           <p className='mt-3 '>
             Myself Iraz Ramin Bayejid.I am a professional wedding photographer.
             Currently, I work as a freelance photographer.I shoot wedding

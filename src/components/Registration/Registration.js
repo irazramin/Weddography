@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import loader from '../../img/loader.svg';
+
 
 const Registration = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
@@ -86,8 +88,15 @@ createUserWithEmailAndPassword(email, password).then(() =>{
           <div>
             <p className='text-red-500 font-medium '>{error?.message}</p>
           </div>
-          <button className='w-full bg-red-500 text-white py-2 mt-10 rounded'>
-            Register
+          <button className='w-full bg-red-500 text-white h-[40px] mt-5 rounded'>
+            {loading ? (
+              <>
+                {' '}
+                <img className='w-[25px] mx-auto' src={loader} alt='' />{' '}
+              </>
+            ) : (
+              'Register'
+            )}
           </button>
           <p className='text-center mt-5 w-full'>
             Already have an account?

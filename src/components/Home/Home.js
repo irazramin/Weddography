@@ -17,7 +17,7 @@ const Home = () => {
             <h2 className=' text-white lg:text-6xl text-4xl'>
               WEDDING PHOTOGRAPHERS <br /> NEAR ME
             </h2>
-            <button onClick={navigateAbout} className='bg-red-500 mt-10   px-6 py-2 rounded font-medium text-white text-base hover:bg-orange-600'>
+            <button onClick={navigateAbout} className='bg-red-500 mt-10   px-6 py-2 rounded font-medium text-white text-base hover:bg-red-700'>
               know about me
             </button>
           </div>

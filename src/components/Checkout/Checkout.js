@@ -1,10 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import useFetch from '../hooks/useFetch';
 
 const Checkout = () => {
   const navigate = useNavigate()
-  const [services,setServices] = useFetch()
   const navigateService = () =>{
     navigate('/');
   }

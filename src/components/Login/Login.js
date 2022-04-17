@@ -1,11 +1,12 @@
 import { sendPasswordResetEmail } from 'firebase/auth';
 import React, { useState } from 'react';
 import {
-    useAuthState,
-    useSignInWithEmailAndPassword
+  useAuthState,
+  useSignInWithEmailAndPassword
 } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import loader from '../../img/loader.svg';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -39,7 +40,11 @@ const Login = () => {
     navigate('/registration');
   };
   const resetPassword = () => {
-    sendPasswordResetEmail(auth,email);
+    if(email){
+      sendPasswordResetEmail(auth, email);
+    }else{
+      alert('enter email')
+    }
   };
   return (
     <div className='w-11/12 lg:w-1/2 mx-auto mt-10 h-screen my-auto'>
@@ -74,8 +79,8 @@ const Login = () => {
               reset password?
             </button>
           </div>
-          <button className='w-full bg-red-500 text-white py-2 mt-5 rounded'>
-            Login
+          <button className='w-full bg-red-500 text-white h-[40px] mt-5 rounded'>
+            {loading ? <> <img className='w-[25px] mx-auto' src={loader} alt="" /> </> : 'Login'}
           </button>
           <p className='text-center mt-5 w-full'>
             New user?
@@ -88,6 +93,7 @@ const Login = () => {
           </p>
         </form>
       </div>
+
     </div>
   );
 };
