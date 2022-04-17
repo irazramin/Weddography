@@ -47,8 +47,8 @@ createUserWithEmailAndPassword(email, password).then(() =>{
     })
   };
   return (
-    <div className='w-full lg:w-1/2 mx-auto mt-10 h-screen'>
-      <div className='w-full lg:w-1/2  mx-auto shadow-md p-5'>
+    <div className='w-11/12  lg:w-1/2 mx-auto mt-10 h-screen'>
+      <div className='w-11/12  lg:w-1/2  mx-auto shadow-md p-5'>
         <h4 className='text-2xl font-medium text-slate-900'>Create Account</h4>
         <form onSubmit={handleRegistrationSubmit} className='mt-5'>
           <div>

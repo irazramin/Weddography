@@ -1,11 +1,12 @@
 import { signOut } from 'firebase/auth';
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import CustomLink from '../CustomLink/CustomLink';
 
 const Header = () => {
+  const [toggle,setToggle] = useState(false)
     const navigate = useNavigate();
     const [user] = useAuthState(auth);
     const navItems = [
@@ -39,11 +40,21 @@ const Header = () => {
     }
   return (
     <header className='bg-slate-100 py-3  '>
-      <nav className='flex items-center justify-between w-10/12 mx-auto sticky top-0'>
+      <button
+        className='duration-500 absolute left-3'
+        onClick={() => setToggle(!toggle)}
+      >
+        =
+      </button>
+      <nav className='lg:flex items-center justify-between w-10/12 mx-auto  top-0 relative'>
         <div>
-          <h4 className='font-medium text-xl'>Weddography</h4>
+          <h4 className='font-medium text-xl text-center lg:text-left'>Weddography</h4>
         </div>
-        <div className='flex items-center justify-between '>
+        <div
+          className={`lg:flex items-center justify-between hidden${
+            toggle ? 'block' : ''
+          }`}
+        >
           {navItems.map((item) => (
             <CustomLink
               className='mx-3 text-lg font-normal '
@@ -53,22 +64,22 @@ const Header = () => {
               {item.navLink}
             </CustomLink>
           ))}
-          {user ? (
-            <button
-              onClick={userSignOut}
-              className='text-lg bg-red-500 px-[12px] py-[2px] text-white rounded shadow'
-            >
-              Sign out
-            </button>
-          ) : (
-            <button
-              onClick={navigateLoginPage}
-              className='text-lg bg-red-500 px-[12px] py-[2px] text-white rounded shadow'
-            >
-              Login
-            </button>
-          )}
         </div>
+        {user ? (
+          <button
+            onClick={userSignOut}
+            className='text-lg bg-red-500 px-[12px] py-[2px] text-white rounded shadow absolute top-0 right-0 lg:relative'
+          >
+            Sign out
+          </button>
+        ) : (
+          <button
+            onClick={navigateLoginPage}
+            className='text-lg bg-red-500 px-[12px] py-[2px] text-white rounded shadow  absolute top-0 right-0 lg:relative'
+          >
+            Login
+          </button>
+        )}
       </nav>
     </header>
   );

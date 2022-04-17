@@ -24,7 +24,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div id='services' className='mt-10 w-3/5 mx-auto'>
+      <div id='services' className='mt-10 w-11/12 lg:w-3/5 mx-auto'>
         <h4 className='text-center text-slate-900 text-2xl  font-medium'>
           Services
         </h4>
