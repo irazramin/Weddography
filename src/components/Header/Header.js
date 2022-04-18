@@ -1,4 +1,4 @@
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { signOut } from 'firebase/auth';
 import React, { useState } from 'react';
@@ -57,9 +57,19 @@ const Header = () => {
         className='duration-500 absolute left-3 lg:hidden block'
         onClick={() => setToggle(!toggle)}
       >
-        <FontAwesomeIcon icon={faBars} className='text-[25px]'/>
+        {toggle ? (
+          <FontAwesomeIcon
+            icon={faTimes}
+            className={`text-[25px] duration-300`}
+          />
+        ) : (
+          <FontAwesomeIcon
+            icon={faBars}
+            className={`text-[25px] duration-300`}
+          />
+        )}
       </button>
-      <nav className='lg:flex items-center justify-between w-10/12 mx-auto  top-0 relative'>
+      <nav className='lg:flex items-center justify-between w-10/12 mx-auto  top-0 relative duration-1000 transition-all'>
         <div>
           <h4
             onClick={navigateHome}

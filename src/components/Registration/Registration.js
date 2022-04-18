@@ -11,17 +11,23 @@ const Registration = () => {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [showToast, setShowToast] = useState(false);
-
+  const [customError,setCustomError] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const navigate = useNavigate();
 
   const handleRegistrationSubmit = (e) => {
     e.preventDefault();
    
-    createUserWithEmailAndPassword(email, password).then(() => {
-      sendVerification(user);
-      setShowToast(true)
-    });
+  
+    if (password !== confirmPassword) {
+      setCustomError('password not match.');
+    }else{
+  createUserWithEmailAndPassword(email, password).then(() => {
+    sendVerification(user);
+    setShowToast(true);
+  });
+    }
   };
 
   if (user) {
@@ -41,10 +47,14 @@ const Registration = () => {
   const handlePasswordInput = (e) => {
     setPassword(e.target.value);
   };
+  const handleConfirmPasswordInput = (e) => {
+    setConfirmPassword(e.target.value);
+  };
   const handleLogin = () => {
     navigate('/login');
   };
 
+  
 
   const closeToast = () => {
     setShowToast(false);
@@ -83,14 +93,14 @@ const Registration = () => {
           </div>
           <div>
             <input
-              onBlur={handlePasswordInput}
+              onBlur={handleConfirmPasswordInput}
               className='border-2 border-slate-300 px-5 py-2 rounded w-full mt-5 '
               type='password'
               placeholder='confirm password'
             />
           </div>
           <div>
-            <p className='text-red-500 font-medium '>{error?.message}</p>
+            <p className='text-red-500 font-medium '>{error?.message || customError}</p>
           </div>
           <button className='w-full bg-red-500 text-white h-[40px] mt-5 rounded'>
             {loading ? (

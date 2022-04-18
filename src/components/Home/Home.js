@@ -54,14 +54,14 @@ const Home = () => {
         </div>
       </div>
 
-      <div id='services' className='mt-10 w-11/12 lg:w-3/5 mx-auto'>
+      <div id='services' className='mt-10 w-11/12 lg:w-[70%] mx-auto'>
         <h4 className='text-center text-slate-900 text-2xl  font-medium'>
           Services
         </h4>
         <Services />
       </div>
 
-      <div className='my-36 border-dotted border-2 place-items-center w-[90%] lg:w-[60%] mx-auto p-10'>
+      <div className='my-36 border-dotted border-2 place-items-center w-[90%] lg:w-[70%] mx-auto p-10'>
         <h4 className='text-lg font-medium text-center mb-5'>
           My recent works
         </h4>
