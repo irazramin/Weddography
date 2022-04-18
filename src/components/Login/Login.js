@@ -13,7 +13,9 @@ import loader from '../../img/loader.svg';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [showToast,setShowToast] = useState(false)
+  const [showToast, setShowToast] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [resetEmail, setResetEmail] = useState('');
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
   const [signInWithGoogle, user2, loading1, error1] = useSignInWithGoogle(auth);
@@ -29,9 +31,9 @@ const Login = () => {
     navigate(from, { replace: true });
   }
 
-  setTimeout(()=>{
-    setShowToast(false)
-  },5000)
+  setTimeout(() => {
+    setShowToast(false);
+  }, 5000);
   const handleRegistrationSubmit = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(email, password);
@@ -42,24 +44,35 @@ const Login = () => {
   const handlePasswordInput = (e) => {
     setPassword(e.target.value);
   };
+
+  const handleResetEmailInput = e =>{
+    setResetEmail(e.target.value);
+  }
   const handleRegister = () => {
     navigate('/registration');
   };
   const resetPassword = () => {
-    if (email) {
-      sendPasswordResetEmail(auth, email);
-      setShowToast(true)
+    setIsModalOpen(true)
+  };
+
+  const sendPasswordToMail = () =>{
+    if (resetEmail) {
+      sendPasswordResetEmail(auth, resetEmail);
+      setShowToast(true);
+      setIsModalOpen(false)
     } else {
       alert('enter email');
     }
-  };
-
+  }
   const handleLoginWithGoogle = () => {
-    signInWithGoogle()
+    signInWithGoogle();
   };
 
-  const closeToast = () =>{
-    setShowToast(false)
+  const closeToast = () => {
+    setShowToast(false);
+  };
+  const closeModal = () =>{
+    setIsModalOpen(false)
   }
   return (
     <div className='w-11/12 lg:w-1/2 mx-auto mt-10 h-screen my-auto'>
@@ -134,54 +147,115 @@ const Login = () => {
         </button>
       </div>
 
-        {/* toast */}
-        {
-          showToast ?
-      <div
-        id='toast-success'
-        className='flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 absolute top-[70px] right-5'
-        role='alert'
-      >
-        <div className='inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200'>
-          <svg
-            className='w-5 h-5'
-            fill='currentColor'
-            viewBox='0 0 20 20'
-            xmlns='http://www.w3.org/2000/svg'
-          >
-            <path
-              fill-rule='evenodd'
-              d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'
-              clip-rule='evenodd'
-            ></path>
-          </svg>
-        </div>
-        <div className='ml-3 text-sm font-normal'>Check email for reset password</div>
-        <button
-        onClick={closeToast}
-          type='button'
-          className='ml-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700'
-          data-dismiss-target='#toast-success'
-          aria-label='Close'
+      {/* toast */}
+      {showToast ? (
+        <div
+          id='toast-success'
+          className='flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-red-500 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 absolute top-[70px] right-5'
+          role='alert'
         >
-          <span className='sr-only'>Close</span>
-          <svg
-            className='w-5 h-5'
-            fill='currentColor'
-            viewBox='0 0 20 20'
-            xmlns='http://www.w3.org/2000/svg'
+          <div className='inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200'>
+            <svg
+              className='w-5 h-5'
+              fill='currentColor'
+              viewBox='0 0 20 20'
+              xmlns='http://www.w3.org/2000/svg'
+            >
+              <path
+                fill-rule='evenodd'
+                d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'
+                clip-rule='evenodd'
+              ></path>
+            </svg>
+          </div>
+          <div className='ml-3 text-sm font-normal text-white'>
+            Check email for reset password
+          </div>
+          <button
+            onClick={closeToast}
+            type='button'
+            className='ml-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700'
+            data-dismiss-target='#toast-success'
+            aria-label='Close'
           >
-            <path
-              fill-rule='evenodd'
-              d='M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z'
-              clip-rule='evenodd'
-            ></path>
-          </svg>
-        </button>
-      </div>
-        :
+            <span className='sr-only'>Close</span>
+            <svg
+              className='w-5 h-5'
+              fill='currentColor'
+              viewBox='0 0 20 20'
+              xmlns='http://www.w3.org/2000/svg'
+            >
+              <path
+                fill-rule='evenodd'
+                d='M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z'
+                clip-rule='evenodd'
+              ></path>
+            </svg>
+          </button>
+        </div>
+      ) : (
         ''
-        }
+      )}
+
+      <div>
+        <div
+          id='authentication-modal'
+          tabindex='-1'
+          aria-hidden='true'
+          className={`mx-auto absolute top-0 flex   z-50 w-full md:inset-0 h-modal md:h-full justify-center mt-[200px] ${
+            isModalOpen ? 'block' : 'hidden'
+          }`}
+        >
+          <div className='relative p-4 w-full max-w-md h-full md:h-auto'>
+            <div className='relative bg-white rounded-lg shadow dark:bg-gray-700'>
+              <div className='flex justify-end p-2'>
+                <button
+                  type='button'
+                  onClick={closeModal}
+                  className='text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white'
+                  data-modal-toggle='authentication-modal'
+                >
+                  <svg
+                    className='w-5 h-5'
+                    fill='currentColor'
+                    viewBox='0 0 20 20'
+                    xmlns='http://www.w3.org/2000/svg'
+                  >
+                    <path
+                      fill-rule='evenodd'
+                      d='M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z'
+                      clip-rule='evenodd'
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+              <form
+                className='px-6 pb-4 space-y-6 lg:px-8 sm:pb-6 xl:pb-8'
+                action='#'
+              >
+                <h3 className='text-xl font-medium text-gray-900 dark:text-white'>
+                  Reset your password
+                </h3>
+                <div>
+                  <input
+                    onBlur={handleResetEmailInput}
+                    className='border-2 border-slate-300 w-full px-5 py-2 rounded m-auto'
+                    type='email'
+                    placeholder='your email'
+                  />
+                </div>
+                <button
+                  onClick={sendPasswordToMail}
+                  type='button'
+                  className='w-full bg-red-500 text-white h-[40px] mt-5 rounded'
+                >
+                  Reset password
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

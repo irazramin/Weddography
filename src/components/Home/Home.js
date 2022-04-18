@@ -62,11 +62,20 @@ const Home = () => {
       </div>
 
       <div className='my-36 border-dotted border-2 place-items-center w-[90%] lg:w-[60%] mx-auto p-10'>
-        <h4 className='text-lg font-medium text-center mb-5'>My Works</h4>
+        <h4 className='text-lg font-medium text-center mb-5'>
+          My recent works
+        </h4>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-10'>
           {workImages.map((work) => (
             <MyWork key={work.id} work={work} />
           ))}
+        </div>
+        <div className='text-center'>
+          <button
+            className='bg-red-500 mt-10   px-6 py-2 rounded font-medium text-white text-base hover:bg-red-700'
+          >
+            See all works
+          </button>
         </div>
       </div>
     </section>
